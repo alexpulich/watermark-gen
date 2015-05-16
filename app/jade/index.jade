@@ -1,0 +1,66 @@
+extends layout/layout.jade
+
+block content
+	.wrapper
+		.language_switcher
+			ul.language_switcher-list
+				each title in['РУС', 'ENG']
+					li.language_switcher-item
+						a(href='#').language_switcher-link=title
+		.container.clearfix
+			.content
+				h1.content__title Генератор водяных знаков
+				.generate__preview
+			.config__panel
+				h3.config__panel-title Настройки
+
+				form.generate__form
+					.generate__form-section.generate__form-file
+						.generate__form-row
+							label.generate__form-title Исходное изображение
+							input(type='file', name='' class="input-file" id='file')
+							.generate__form-upload#value-file
+						.generate__form-row
+							label.generate__form-title Водяной знак
+
+							input(type='file', name='' class="input-file" id='watermark')
+							.generate__form-upload#value-watermark
+
+					.generate__form-section.generate__form-position.clearfix
+						label.generate__form-title Положение
+						.generate__form-position__switcher
+							input(type='radio' id='switcher1' name='switcher' checked).switcher__input
+							label(for="switcher1").switcher__button
+							input(type='radio' id='switcher2' name='switcher').switcher__input
+							label(for="switcher2").switcher__button
+							input(type='radio' id='switcher3' name='switcher').switcher__input
+							label(for="switcher3").switcher__button
+							input(type='radio' id='switcher4' name='switcher').switcher__input
+							label(for="switcher4").switcher__button
+							input(type='radio' id='switcher5' name='switcher').switcher__input
+							label(for="switcher5").switcher__button
+							input(type='radio' id='switcher6' name='switcher').switcher__input
+							label(for="switcher6").switcher__button
+							input(type='radio' id='switcher7' name='switcher').switcher__input
+							label(for="switcher7").switcher__button
+							input(type='radio' id='switcher8' name='switcher').switcher__input
+							label(for="switcher8").switcher__button
+							input(type='radio' id='switcher9' name='switcher').switcher__input
+							label(for="switcher9").switcher__button
+
+						.generate__form-position__spinner
+							.position__spinner-x
+								span.position__spinner-text X
+								input(value='0').spinner
+							.position__spinner-y
+								span.position__spinner-text Y
+								input(value='0').spinner
+
+					.generate__form-section.generate__form-opacity.clearfix
+						label.generate__form-title Прозрачность
+						.generate__form-opacity__slider
+							.slider-range(data-min='0' data-max='100' data-step='1')
+
+					.generate__form-section.generate__form-buttons.clearfix
+						input(type='reset' value='Сброс').generate__form-btn-reset
+						input(type='submit' value='Скачать').generate__form-btn-submit

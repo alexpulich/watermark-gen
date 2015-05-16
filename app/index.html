@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <!-- Styles-->
+    <link rel="stylesheet" href="bower/normalize.css/normalize.css">
+    <link rel="stylesheet" href="css/build/base.min.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+    <title>
+    </title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="language_switcher">
+        <ul class="language_switcher-list">
+          <li class="language_switcher-item"><a href="#" class="language_switcher-link">РУС</a></li>
+          <li class="language_switcher-item"><a href="#" class="language_switcher-link">ENG</a></li>
+        </ul>
+      </div>
+      <div class="container clearfix">
+        <div class="content">
+          <h1 class="content__title">Генератор водяных знаков</h1>
+          <div class="generate__preview"></div>
+        </div>
+        <div class="config__panel">
+          <h3 class="config__panel-title">Настройки</h3>
+          <form class="generate__form">
+            <div class="generate__form-section generate__form-file">
+              <div class="generate__form-row">
+                <label class="generate__form-title">Исходное изображение</label>
+                <input type="file" name="" id="file" class="input-file">
+                <div id="value-file" class="generate__form-upload"></div>
+              </div>
+              <div class="generate__form-row">
+                <label class="generate__form-title">Водяной знак</label>
+                <input type="file" name="" id="watermark" class="input-file">
+                <div id="value-watermark" class="generate__form-upload"></div>
+              </div>
+            </div>
+            <div class="generate__form-section generate__form-position clearfix">
+              <label class="generate__form-title">Положение</label>
+              <div class="generate__form-position__switcher">
+                <input type="radio" id="switcher1" name="switcher" checked class="switcher__input">
+                <label for="switcher1" class="switcher__button"></label>
+                <input type="radio" id="switcher2" name="switcher" class="switcher__input">
+                <label for="switcher2" class="switcher__button"></label>
+                <input type="radio" id="switcher3" name="switcher" class="switcher__input">
+                <label for="switcher3" class="switcher__button"></label>
+                <input type="radio" id="switcher4" name="switcher" class="switcher__input">
+                <label for="switcher4" class="switcher__button"></label>
+                <input type="radio" id="switcher5" name="switcher" class="switcher__input">
+                <label for="switcher5" class="switcher__button"></label>
+                <input type="radio" id="switcher6" name="switcher" class="switcher__input">
+                <label for="switcher6" class="switcher__button"></label>
+                <input type="radio" id="switcher7" name="switcher" class="switcher__input">
+                <label for="switcher7" class="switcher__button"></label>
+                <input type="radio" id="switcher8" name="switcher" class="switcher__input">
+                <label for="switcher8" class="switcher__button"></label>
+                <input type="radio" id="switcher9" name="switcher" class="switcher__input">
+                <label for="switcher9" class="switcher__button"></label>
+              </div>
+              <div class="generate__form-position__spinner">
+                <div class="position__spinner-x"><span class="position__spinner-text">X</span>
+                  <input value="0" class="spinner">
+                </div>
+                <div class="position__spinner-y"><span class="position__spinner-text">Y</span>
+                  <input value="0" class="spinner">
+                </div>
+              </div>
+            </div>
+            <div class="generate__form-section generate__form-opacity clearfix">
+              <label class="generate__form-title">Прозрачность</label>
+              <div class="generate__form-opacity__slider">
+                <div data-min="0" data-max="100" data-step="1" class="slider-range"></div>
+              </div>
+            </div>
+            <div class="generate__form-section generate__form-buttons clearfix">
+              <input type="reset" value="Сброс" class="generate__form-btn-reset">
+              <input type="submit" value="Скачать" class="generate__form-btn-submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>© 2015, Генератор водяных знаков, Loft-scool, команда №5</p>
+    </div>
+    <!-- Js-->
+    <script src="bower/jquery/dist/jquery.min.js"></script>
+    <script src="bower/jquery-ui/jquery-ui.min.js"></script>
+    <script src="bower/jquery-ui/ui/spinner.js"></script>
+    <script src="bower/jquery-ui/ui/slider.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
