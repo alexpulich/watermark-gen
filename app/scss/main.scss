@@ -113,6 +113,7 @@ html{
 			.generate__form-row{
 				position: relative;
 				margin-bottom: 23px;
+				overflow: hidden;
 			}
 
 			.input-file{
@@ -135,7 +136,7 @@ html{
 				font-size: 12px;
 				line-height: 27px;
 				padding: 0 39px 0 6px;
-				overflow: hidden;
+				white-space:nowrap;
 
 				&:after{
 					content: "";
