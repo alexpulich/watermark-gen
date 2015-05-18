@@ -7,7 +7,7 @@ block content
 				each title in['РУС', 'ENG']
 					li.language_switcher-item
 						a(href='#').language_switcher-link=title
-		.container.clearfix
+		.container
 			.content
 				h1.content__title Генератор водяных знаков
 				.generate__preview
@@ -26,7 +26,7 @@ block content
 							input(type='file', name='' class="input-file" id='watermark')
 							.generate__form-upload#value-watermark
 
-					.generate__form-section.generate__form-position.clearfix
+					.generate__form-section.generate__form-position
 						label.generate__form-title Положение
 						.generate__form-position__switcher
 							input(type='radio' id='switcher1' name='switcher' checked).switcher__input
@@ -56,11 +56,11 @@ block content
 								span.position__spinner-text Y
 								input(value='0').spinner
 
-					.generate__form-section.generate__form-opacity.clearfix
+					.generate__form-section.generate__form-opacity
 						label.generate__form-title Прозрачность
 						.generate__form-opacity__slider
 							.slider-range(data-min='0' data-max='100' data-step='1')
 
-					.generate__form-section.generate__form-buttons.clearfix
+					.generate__form-section.generate__form-buttons
 						input(type='reset' value='Сброс').generate__form-btn-reset
 						input(type='submit' value='Скачать').generate__form-btn-submit

@@ -1,11 +1,15 @@
 /*===============variables===============*/
 /*================mixins==============*/
 .clearfix:before,
-.clearfix:after {
+.container:before,
+.config__panel .generate__form .generate__form-position:before,
+.config__panel .generate__form .generate__form-opacity:before,
+.config__panel .generate__form .generate__form-buttons:before,
+.clearfix:after, .container:after, .config__panel .generate__form .generate__form-position:after, .config__panel .generate__form .generate__form-opacity:after, .config__panel .generate__form .generate__form-buttons:after {
   content: " ";
   display: table; }
 
-.clearfix:after {
+.clearfix:after, .container:after, .config__panel .generate__form .generate__form-position:after, .config__panel .generate__form .generate__form-opacity:after, .config__panel .generate__form .generate__form-buttons:after {
   clear: both; }
 
 body {
@@ -27,8 +31,7 @@ html {
 
 .wrapper {
   padding: 60px 0 81px;
-  position: relative;
-  height: 100%; }
+  position: relative; }
 
 .container {
   width: 960px;
@@ -115,7 +118,7 @@ html {
     padding: 5px 18px 50px; }
     .config__panel .generate__form .generate__form-position .generate__form-position__switcher {
       float: left;
-      width: 102px;
+      width: 104px;
       height: 100px;
       border: 1px solid #9eb2c0;
       border-bottom: none;
@@ -128,7 +131,7 @@ html {
       margin-top: 25px; }
       .config__panel .generate__form .generate__form-position .generate__form-position__switcher .switcher__button {
         display: block;
-        width: 33.33333333%;
+        width: 34px;
         height: 33.33333333%;
         float: left;
         border-right: 1px solid #9eb2c0;
@@ -211,6 +214,8 @@ html {
           cursor: pointer;
           margin: -12px 0px 0px -11px;
           background: url(../images/slider-btn.png) no-repeat; }
+          .config__panel .generate__form .generate__form-opacity .generate__form-opacity__slider .slider-range .ui-slider-handle:hover {
+            background: url(../images/slider-btn-hover.png) no-repeat; }
   .config__panel .generate__form .generate__form-buttons {
     background: none; }
     .config__panel .generate__form .generate__form-buttons .generate__form-btn-reset {
@@ -226,6 +231,8 @@ html {
       font-family: Roboto-Medium;
       float: left;
       margin-top: 47px; }
+      .config__panel .generate__form .generate__form-buttons .generate__form-btn-reset:hover {
+        box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #a6b2bb, inset 0px -1px 0px #a6b2bb, inset 1px 0px 0px #a6b2bb, inset -1px 0px 0px #a6b2bb; }
     .config__panel .generate__form .generate__form-buttons .generate__form-btn-submit {
       background: #f97e76;
       border: none;
@@ -239,6 +246,8 @@ html {
       font-family: Roboto-Medium;
       float: right;
       margin-top: 47px; }
+      .config__panel .generate__form .generate__form-buttons .generate__form-btn-submit:hover {
+        box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #e3736c, inset 0px -1px 0px #e3736c, inset 1px 0px 0px #e3736c, inset -1px 0px 0px #e3736c; }
 
 .footer {
   text-align: center;
@@ -270,3 +279,5 @@ html {
         background: #d6d4d6;
         padding: 10px 5px;
         font-family: SegoeUI-Light; }
+        .language_switcher .language_switcher-list .language_switcher-item .language_switcher-link:hover {
+          color: #444a53; }
