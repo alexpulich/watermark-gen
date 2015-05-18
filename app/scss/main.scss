@@ -285,6 +285,7 @@ html{
 		.generate__form-buttons{
 			background: none;
 			@extend .clearfix;
+			padding: 0 10px;
 
 			.generate__form-btn-reset{
 				background: #c1cfd9;

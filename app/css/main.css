@@ -217,7 +217,8 @@ html {
           .config__panel .generate__form .generate__form-opacity .generate__form-opacity__slider .slider-range .ui-slider-handle:hover {
             background: url(../images/slider-btn-hover.png) no-repeat; }
   .config__panel .generate__form .generate__form-buttons {
-    background: none; }
+    background: none;
+    padding: 0 10px; }
     .config__panel .generate__form .generate__form-buttons .generate__form-btn-reset {
       background: #c1cfd9;
       border: none;
