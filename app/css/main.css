@@ -2,14 +2,14 @@
 /*================mixins==============*/
 .clearfix:before,
 .container:before,
-.config__panel .generate__form .generate__form-position:before,
-.config__panel .generate__form .generate__form-opacity:before,
-.config__panel .generate__form .generate__form-buttons:before,
-.clearfix:after, .container:after, .config__panel .generate__form .generate__form-position:after, .config__panel .generate__form .generate__form-opacity:after, .config__panel .generate__form .generate__form-buttons:after {
+.generate__form-position:before,
+.generate__form-opacity:before,
+.generate__form-buttons:before,
+.clearfix:after, .container:after, .generate__form-position:after, .generate__form-opacity:after, .generate__form-buttons:after {
   content: " ";
   display: table; }
 
-.clearfix:after, .container:after, .config__panel .generate__form .generate__form-position:after, .config__panel .generate__form .generate__form-opacity:after, .config__panel .generate__form .generate__form-buttons:after {
+.clearfix:after, .container:after, .generate__form-position:after, .generate__form-opacity:after, .generate__form-buttons:after {
   clear: both; }
 
 body {
@@ -21,7 +21,8 @@ body {
   background-size: cover; }
 
 html {
-  height: 100%; }
+  height: 100%;
+  min-width: 1070px; }
 
 * {
   box-sizing: border-box;
@@ -61,194 +62,201 @@ html {
   height: 674px;
   float: right;
   padding: 24px 0; }
-  .config__panel .config__panel-title {
-    color: #2e3641;
-    font-size: 26px;
-    text-align: center;
-    font-family: 'Roboto-Light';
-    font-weight: 300;
-    margin: 0 0 31px 0; }
-  .config__panel .generate__form .generate__form-section {
-    background: url(../images/line.png) no-repeat bottom center;
-    padding: 0 18px; }
-  .config__panel .generate__form .generate__form-title {
-    color: #2e3641;
-    font-size: 14px;
-    display: block;
-    margin-bottom: 7px; }
-  .config__panel .generate__form .generate__form-file {
-    padding: 0 18px 20px; }
-    .config__panel .generate__form .generate__form-file .generate__form-row {
-      position: relative;
-      margin-bottom: 23px;
-      overflow: hidden; }
-    .config__panel .generate__form .generate__form-file .input-file {
-      opacity: 0;
+
+.config__panel-title {
+  color: #2e3641;
+  font-size: 26px;
+  text-align: center;
+  font-family: 'Roboto-Light';
+  font-weight: 300;
+  margin: 0 0 31px 0; }
+
+.generate__form-section {
+  background: url(../images/line.png) no-repeat bottom center;
+  padding: 0 18px; }
+
+.generate__form-title {
+  color: #2e3641;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 7px; }
+
+.generate__form-file {
+  padding: 0 18px 20px; }
+  .generate__form-file .generate__form-row {
+    position: relative;
+    margin-bottom: 23px;
+    overflow: hidden; }
+  .generate__form-file .input-file {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    cursor: pointer;
+    z-index: 10;
+    height: 27px; }
+  .generate__form-file .generate__form-upload {
+    width: 100%;
+    position: relative;
+    border: 1px solid #9eb2c0;
+    height: 27px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    cursor: pointer;
+    color: #9eb2c0;
+    font-size: 12px;
+    line-height: 27px;
+    padding: 0 39px 0 6px;
+    white-space: nowrap; }
+    .generate__form-file .generate__form-upload:after {
+      content: "";
+      display: block;
       position: absolute;
-      width: 100%;
-      cursor: pointer;
-      z-index: 10;
-      height: 27px; }
-    .config__panel .generate__form .generate__form-file .generate__form-upload {
-      width: 100%;
-      position: relative;
-      border: 1px solid #9eb2c0;
+      right: -1px;
+      top: -1px;
+      width: 39px;
       height: 27px;
-      border-radius: 3px;
-      -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-      -o-border-radius: 3px;
-      cursor: pointer;
-      color: #9eb2c0;
-      font-size: 12px;
-      line-height: 27px;
-      padding: 0 39px 0 6px;
-      white-space: nowrap; }
-      .config__panel .generate__form .generate__form-file .generate__form-upload:after {
-        content: "";
-        display: block;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        width: 39px;
-        height: 27px;
-        border-radius: 0 3px 3px 0;
-        background: #f97e76 url(../images/upload-icon.png) no-repeat center center; }
-  .config__panel .generate__form .generate__form-position {
-    padding: 5px 18px 50px; }
-    .config__panel .generate__form .generate__form-position .generate__form-position__switcher {
+      border-radius: 0 3px 3px 0;
+      background: #f97e76 url(../images/upload-icon.png) no-repeat center center; }
+
+.generate__form-position {
+  padding: 5px 18px 50px; }
+  .generate__form-position .generate__form-position__switcher {
+    float: left;
+    width: 104px;
+    height: 100px;
+    border: 1px solid #9eb2c0;
+    border-bottom: none;
+    position: relative;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    overflow: hidden;
+    margin-top: 25px; }
+    .generate__form-position .generate__form-position__switcher .switcher__button {
+      display: block;
+      width: 34px;
+      height: 33.33333333%;
       float: left;
-      width: 104px;
-      height: 100px;
-      border: 1px solid #9eb2c0;
-      border-bottom: none;
+      border-right: 1px solid #9eb2c0;
+      border-bottom: 1px solid #9eb2c0;
+      background: #dbe1e8;
+      cursor: pointer; }
+      .generate__form-position .generate__form-position__switcher .switcher__button:nth-child(3n+3) {
+        border-right: none; }
+    .generate__form-position .generate__form-position__switcher .switcher__input {
+      position: absolute;
+      display: none; }
+      .generate__form-position .generate__form-position__switcher .switcher__input:checked + label {
+        background: #f97e76; }
+  .generate__form-position .generate__form-position__spinner {
+    float: right;
+    margin-top: 25px; }
+    .generate__form-position .generate__form-position__spinner .position__spinner-x {
+      margin-bottom: 10px;
       position: relative;
-      border-radius: 3px;
-      -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-      -o-border-radius: 3px;
-      overflow: hidden;
-      margin-top: 25px; }
-      .config__panel .generate__form .generate__form-position .generate__form-position__switcher .switcher__button {
-        display: block;
-        width: 34px;
-        height: 33.33333333%;
-        float: left;
-        border-right: 1px solid #9eb2c0;
-        border-bottom: 1px solid #9eb2c0;
-        background: #dbe1e8;
-        cursor: pointer; }
-        .config__panel .generate__form .generate__form-position .generate__form-position__switcher .switcher__button:nth-child(3n+3) {
-          border-right: none; }
-      .config__panel .generate__form .generate__form-position .generate__form-position__switcher .switcher__input {
-        position: absolute;
-        display: none; }
-        .config__panel .generate__form .generate__form-position .generate__form-position__switcher .switcher__input:checked + label {
-          background: #f97e76; }
-    .config__panel .generate__form .generate__form-position .generate__form-position__spinner {
-      float: right;
-      margin-top: 25px; }
-      .config__panel .generate__form .generate__form-position .generate__form-position__spinner .position__spinner-x {
-        margin-bottom: 10px;
-        position: relative;
-        padding-right: 22px; }
-      .config__panel .generate__form .generate__form-position .generate__form-position__spinner .position__spinner-y {
-        position: relative;
-        padding-right: 22px; }
-      .config__panel .generate__form .generate__form-position .generate__form-position__spinner .position__spinner-text {
-        float: left;
-        display: block;
-        margin: 14px 6px 0 0;
-        color: #2e3641;
-        font-size: 16px; }
-      .config__panel .generate__form .generate__form-position .generate__form-position__spinner .spinner {
-        width: 46px;
-        height: 45px;
-        border: 1px solid #9eb2c0;
-        text-align: center;
-        color: #444a53;
-        font-size: 24px;
-        outline: none;
-        border-radius: 3px;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        -o-border-radius: 3px;
-        background: #f1f1f5; }
-      .config__panel .generate__form .generate__form-position .generate__form-position__spinner .ui-spinner-button {
-        position: absolute;
-        text-indent: 99999px;
-        display: block;
-        overflow: hidden;
-        width: 13px;
-        height: 8px;
-        right: 0;
-        cursor: pointer;
-        background: url(../images/spinner-arrows.png) no-repeat 0 0; }
-      .config__panel .generate__form .generate__form-position .generate__form-position__spinner .ui-spinner-up {
-        top: 3px;
-        background-position: -13px -9px; }
-        .config__panel .generate__form .generate__form-position .generate__form-position__spinner .ui-spinner-up:hover {
-          background-position: 0 0; }
-      .config__panel .generate__form .generate__form-position .generate__form-position__spinner .ui-spinner-down {
-        bottom: 3px;
-        background-position: 0 -9px; }
-        .config__panel .generate__form .generate__form-position .generate__form-position__spinner .ui-spinner-down:hover {
-          background-position: -13px 0; }
-  .config__panel .generate__form .generate__form-opacity {
-    padding: 7px 18px 11px; }
-    .config__panel .generate__form .generate__form-opacity .generate__form-opacity__slider {
-      margin: 30px 0; }
-      .config__panel .generate__form .generate__form-opacity .generate__form-opacity__slider .slider-range {
-        position: relative;
-        background: #dbe1e8;
-        height: 3px; }
-        .config__panel .generate__form .generate__form-opacity .generate__form-opacity__slider .slider-range .ui-slider-range {
-          background: #9eb2c0;
-          height: 3px; }
-        .config__panel .generate__form .generate__form-opacity .generate__form-opacity__slider .slider-range .ui-slider-handle {
-          position: absolute;
-          display: block;
-          width: 24px;
-          height: 24px;
-          outline: none;
-          cursor: pointer;
-          margin: -12px 0px 0px -11px;
-          background: url(../images/slider-btn.png) no-repeat; }
-          .config__panel .generate__form .generate__form-opacity .generate__form-opacity__slider .slider-range .ui-slider-handle:hover {
-            background: url(../images/slider-btn-hover.png) no-repeat; }
-  .config__panel .generate__form .generate__form-buttons {
-    background: none;
-    padding: 0 10px; }
-    .config__panel .generate__form .generate__form-buttons .generate__form-btn-reset {
-      background: #c1cfd9;
-      border: none;
-      color: #fff;
-      border-radius: 3px;
-      -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-      -o-border-radius: 3px;
-      width: 100px;
-      height: 42px;
-      font-family: Roboto-Medium;
+      padding-right: 22px; }
+    .generate__form-position .generate__form-position__spinner .position__spinner-y {
+      position: relative;
+      padding-right: 22px; }
+    .generate__form-position .generate__form-position__spinner .position__spinner-text {
       float: left;
-      margin-top: 47px; }
-      .config__panel .generate__form .generate__form-buttons .generate__form-btn-reset:hover {
-        box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #a6b2bb, inset 0px -1px 0px #a6b2bb, inset 1px 0px 0px #a6b2bb, inset -1px 0px 0px #a6b2bb; }
-    .config__panel .generate__form .generate__form-buttons .generate__form-btn-submit {
-      background: #f97e76;
-      border: none;
-      color: #fff;
+      display: block;
+      margin: 14px 6px 0 0;
+      color: #2e3641;
+      font-size: 16px; }
+    .generate__form-position .generate__form-position__spinner .spinner {
+      width: 46px;
+      height: 45px;
+      border: 1px solid #9eb2c0;
+      text-align: center;
+      color: #444a53;
+      font-size: 24px;
+      outline: none;
       border-radius: 3px;
       -webkit-border-radius: 3px;
       -moz-border-radius: 3px;
       -o-border-radius: 3px;
-      width: 100px;
-      height: 42px;
-      font-family: Roboto-Medium;
-      float: right;
-      margin-top: 47px; }
-      .config__panel .generate__form .generate__form-buttons .generate__form-btn-submit:hover {
-        box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #e3736c, inset 0px -1px 0px #e3736c, inset 1px 0px 0px #e3736c, inset -1px 0px 0px #e3736c; }
+      background: #f1f1f5; }
+    .generate__form-position .generate__form-position__spinner .ui-spinner-button {
+      position: absolute;
+      text-indent: 99999px;
+      display: block;
+      overflow: hidden;
+      width: 13px;
+      height: 8px;
+      right: 0;
+      cursor: pointer;
+      background: url(../images/spinner-arrows.png) no-repeat 0 0; }
+    .generate__form-position .generate__form-position__spinner .ui-spinner-up {
+      top: 3px;
+      background-position: -13px -9px; }
+      .generate__form-position .generate__form-position__spinner .ui-spinner-up:hover {
+        background-position: 0 0; }
+    .generate__form-position .generate__form-position__spinner .ui-spinner-down {
+      bottom: 3px;
+      background-position: 0 -9px; }
+      .generate__form-position .generate__form-position__spinner .ui-spinner-down:hover {
+        background-position: -13px 0; }
+
+.generate__form-opacity {
+  padding: 7px 18px 11px; }
+  .generate__form-opacity .generate__form-opacity__slider {
+    margin: 30px 0; }
+    .generate__form-opacity .generate__form-opacity__slider .slider-range {
+      position: relative;
+      background: #dbe1e8;
+      height: 3px; }
+      .generate__form-opacity .generate__form-opacity__slider .slider-range .ui-slider-range {
+        background: #9eb2c0;
+        height: 3px; }
+      .generate__form-opacity .generate__form-opacity__slider .slider-range .ui-slider-handle {
+        position: absolute;
+        display: block;
+        width: 24px;
+        height: 24px;
+        outline: none;
+        cursor: pointer;
+        margin: -12px 0px 0px -11px;
+        background: url(../images/slider-btn.png) no-repeat; }
+        .generate__form-opacity .generate__form-opacity__slider .slider-range .ui-slider-handle:hover {
+          background: url(../images/slider-btn-hover.png) no-repeat; }
+
+.generate__form-buttons {
+  background: none;
+  padding: 0 10px; }
+  .generate__form-buttons .generate__form-btn-reset {
+    background: #c1cfd9;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    width: 100px;
+    height: 42px;
+    font-family: Roboto-Medium;
+    float: left;
+    margin-top: 47px; }
+    .generate__form-buttons .generate__form-btn-reset:hover {
+      box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #a6b2bb, inset 0px -1px 0px #a6b2bb, inset 1px 0px 0px #a6b2bb, inset -1px 0px 0px #a6b2bb; }
+  .generate__form-buttons .generate__form-btn-submit {
+    background: #f97e76;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    width: 100px;
+    height: 42px;
+    font-family: Roboto-Medium;
+    float: right;
+    margin-top: 47px; }
+    .generate__form-buttons .generate__form-btn-submit:hover {
+      box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #e3736c, inset 0px -1px 0px #e3736c, inset 1px 0px 0px #e3736c, inset -1px 0px 0px #e3736c; }
 
 .footer {
   text-align: center;
