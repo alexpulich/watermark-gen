@@ -4,9 +4,9 @@
     $.fn.socialShare = function (options) {
 
         var defaultOptions = {
-            url: window.location.href,
-            description: $('meta[name=description]').attr("content"),
-            title: $('title').text(),
+            url: window.location.href, //здесь будем указывать ссылку на картинку для шаринга, например $('.pic-class').attr('src');
+            description: $('meta[name=description]').attr("content"), // описание, которое вставится к шарингу
+            title: $('title').text(), //заголовок для шаринга
             twitter: true,
             facebook: true,
             pinterest: true,
