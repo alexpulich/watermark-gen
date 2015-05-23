@@ -1,0 +1,41 @@
+.wraper__image {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.wraper__image-bg {
+	position: absolute;
+	display:block;
+	top:0;
+	bottom: 0;
+	right: 0;
+	left:0;
+	margin: auto;
+}
+
+.image-upload{
+	position: relative;
+	display:block;
+}
+
+.image-watermark {
+	position: absolute;
+	display:block;
+	top:0;
+	bottom: 0;
+	margin: 0 auto;
+}
+.image-upload-w {
+	width: 100%;
+
+}
+.image-upload-h {
+	height: 100%;
+
+}
+#drag {
+	border: 1px solid white;
+}

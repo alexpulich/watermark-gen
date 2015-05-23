@@ -5,12 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <!-- Styles-->
     <link rel="stylesheet" href="bower/normalize.css/normalize.css">
+    <!-- <link rel="stylesheet" href="bower/jquery-ui/themes/base/jquery-ui.css"> -->
     <link rel="stylesheet" href="css/build/base.min.css">
+    <link rel="stylesheet" href="css/fileupload.css">
+   
     <!-- Favicon-->
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <title>
     </title>
+
+     
+
   </head>
   <body>
     <div class="wrapper">
@@ -23,7 +29,9 @@
       <div class="container">
         <div class="content">
           <div class="content__title">Генератор водяных знаков</div>
-          <div class="generate__preview"></div>
+          <div class="generate__preview">
+            
+          </div>
         </div>
         <div class="config__panel">
           <div class="config__panel-title">Настройки</div>
@@ -31,12 +39,12 @@
             <div class="generate__form-section generate__form-file">
               <div class="generate__form-row">
                 <label class="generate__form-title">Исходное изображение</label>
-                <input type="file" name="" id="file" class="input-file">
+                <input type="file" name="" id="file-upload" data-url="server/php/" class="input-file">
                 <div id="value-file" class="generate__form-upload"></div>
               </div>
               <div class="generate__form-row">
                 <label class="generate__form-title">Водяной знак</label>
-                <input type="file" name="" id="watermark" class="input-file">
+                <input type="file" name="" id="watermark" data-url="server/php/" class="input-file">
                 <div id="value-watermark" class="generate__form-upload"></div>
               </div>
             </div>
@@ -93,6 +101,12 @@
     <script src="bower/jquery-ui/jquery-ui.min.js"></script>
     <script src="bower/jquery-ui/ui/spinner.js"></script>
     <script src="bower/jquery-ui/ui/slider.js"></script>
+    <script src="js/jquery.iframe-transport.js"></script>
+    <script src="js/jquery.fileupload.js"></script>
     <script src="js/scripts.js"></script>
+
+ 
+ 
+
   </body>
 </html>
