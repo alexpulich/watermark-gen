@@ -151,56 +151,73 @@ $(document).ready(function () {
                     top: drag.parent().offset().top,
                     left: drag.parent().offset().left
                 });
+                $(".spinner")[1].value = (drag.parent().offset().top);
+                $(".spinner")[0].value = (drag.parent().offset().left);
                 break
             case "switcher2":
                 drag.offset({
                     top: (drag.parent().offset().top),
                     left: (drag.parent().offset().left + (drag.parent().width() - drag.width()) / 2)
                 });
+                $(".spinner")[1].value = 0;
+                $(".spinner")[0].value = (drag.parent().width() - drag.width()) / 2;
+
                 break
             case "switcher3":
                 drag.offset({
                     top: (drag.parent().offset().top),
                     left: (drag.parent().offset().left + drag.parent().width() - drag.width())
                 });
+                $(".spinner")[1].value = 0;
+                $(".spinner")[0].value = drag.parent().width() - drag.width();
                 break
             case "switcher4":
                 drag.offset({
                     top: (drag.parent().offset().top + (drag.parent().height() - drag.height()) / 2),
                     left: (drag.parent().offset().left)
                 });
+                $(".spinner")[1].value = ((drag.parent().height() - drag.height()) / 2);
+                $(".spinner")[0].value = 0;
                 break
             case "switcher5":
                 drag.offset({
                     top: (drag.parent().offset().top + (drag.parent().height() - drag.height()) / 2),
                     left: (drag.parent().offset().left + (drag.parent().width() - drag.width()) / 2)
                 });
-
+                $(".spinner")[1].value = ((drag.parent().height() - drag.height()) / 2);
+                $(".spinner")[0].value = ((drag.parent().width() - drag.width()) / 2);
                 break
             case "switcher6":
                 drag.offset({
                     top: (drag.parent().offset().top + (drag.parent().height() - drag.height()) / 2),
                     left: (drag.parent().offset().left + drag.parent().width() - drag.width())
                 });
-
+                $(".spinner")[1].value = ((drag.parent().height() - drag.height()) / 2);
+                $(".spinner")[0].value = (drag.parent().width() - drag.width());
                 break
             case "switcher7":
                 drag.offset({
                     top: (drag.parent().offset().top + drag.parent().height() - drag.height()),
                     left: (drag.parent().offset().left)
                 });
+                $(".spinner")[1].value = (drag.parent().height() - drag.height());
+                $(".spinner")[0].value = 0;
                 break
             case "switcher8":
                 drag.offset({
                     top: (drag.parent().offset().top + drag.parent().height() - drag.height()),
                     left: (drag.parent().offset().left + (drag.parent().width() - drag.width()) / 2)
                 });
+                $(".spinner")[1].value = (drag.parent().height() - drag.height());
+                $(".spinner")[0].value = ((drag.parent().width() - drag.width()) / 2);
                 break
             case "switcher9":
                 drag.offset({
                     top: (drag.parent().offset().top + drag.parent().height() - drag.height()),
                     left: (drag.parent().offset().left + drag.parent().width() - drag.width())
                 });
+                $(".spinner")[1].value = (drag.parent().height() - drag.height());
+                $(".spinner")[0].value = (drag.parent().width() - drag.width());
                 break
 
             };
