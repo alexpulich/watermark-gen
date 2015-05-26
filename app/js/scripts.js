@@ -1,9 +1,20 @@
 $(document).ready(function () {
 
 
+   
 
-    var spinnerX = $("#spinnerX").spinner({min: 0}),
-        spinnerY = $("#spinnerY").spinner({min: 0});
+    var spinnerX = $("#spinnerX").spinner({min: 0, 
+                                             spin: function (e, ui) {
+                                                if (ui.value < ($(".wraper__image-bg").width()-$("#drag").width()+1)) {
+                                                    $('#drag').css('left', ui.value+'px');
+                                                };
+                                             }}),
+        spinnerY = $("#spinnerY").spinner({min: 0, 
+                                            spin: function (e, ui) {
+                                                if (ui.value < ($(".wraper__image-bg").height()-$("#drag").height()+1)) {
+                                                    $('#drag').css('top', ui.value+'px');
+                                                };
+                                            }});
 
     var sliderRange = $(".slider-range"),
         sliderMin = sliderRange.data('min');
@@ -16,7 +27,11 @@ $(document).ready(function () {
         min: sliderMin,
         max: sliderMax,
         step: sliderStep,
-        range: 'min'
+        range: 'min',
+        animate: false,
+        slide: function (event, ui) {
+            $("#drag").fadeTo(0, (1 - ui.value / 100));
+        }
     });
 
     // событие отправки изображения на сервер
@@ -63,31 +78,38 @@ $(document).ready(function () {
             var width = $(this).width(),
                 height = $(this).height(),
                 boxHeight = $('.wraper__image').height(),
-                boxWidth = $('.wraper__image').width();
+                boxWidth = $('.wraper__image').width(),
+                setResize = function (classCss, h, w) {
+                    $img.addClass(classCss);
 
-            console.log(boxHeight);
-            console.log(boxWidth);
+                        $('.wraper__image-bg').css({
+                            'height': h+'px',
+                            'width': w+'px'
+                        });
+                };
 
             // и масштабируем его добавочным классом
-            if (width > height) {
-                $img.addClass('image-upload-w');
-                $('.wraper__image-bg').css({
-                    'height': '' + Math.round(height * boxWidth / width) + 'px',
-                    'width': boxWidth+'px'
-                });
+            if (width/height > boxWidth/boxHeight) {
+                    if (width > height) {
+                        setResize('image-upload-w', Math.round(height * boxWidth / width),  boxWidth);   
+                    } else {
+                        setResize('image-upload-h', boxHeight,  Math.round(width * boxHeight / height));
+                    }
             } else {
-                $img.addClass('image-upload-h');
-                $('.wraper__image-bg').css({
-                    'height': boxHeight+'px',
-                    'width': '' + Math.round(width * boxHeight / height) + 'px'
-                });
-            }
+                    if (width > height) {
+                        setResize('image-upload-w', boxHeight,  Math.round(width * boxHeight / height));
+                    } else {
+                        setResize('image-upload-h', Math.round(height * boxWidth / width),  boxWidth);
+                    }
+            };
+
         });
 
         // добавляем изображение в документ
         $(".wraper__image-bg").append($img);
 
     });
+    // конец события отправки изображения на сервер
 
     // событие отправки #watermark на сервер
     $('#watermark').fileupload({
@@ -119,18 +141,22 @@ $(document).ready(function () {
             // добавляем изображение в документ
 
             $(".wraper__image-bg").append($wtm);
-            //$wtm.wrap('<div id="drag"></div>');
+        
+            // выполняем drageble и отслеживаем и выводим координаты вотемарка
             $("#drag").draggable({
                 containment: ".image-upload",
                 scroll: false,
                 drag: function() {
-                    spinnerX.spinner( "value", 15 );
+                    spinnerY.spinner( "value", parseInt($('#drag').css('top')));
+                    spinnerX.spinner( "value", parseInt($('#drag').css('left')));
                     }
             });
+
+
         }
 
     });
-
+    // конец события отправки #watermark на сервер
 
 
     $("#file-upload").change(function () {
@@ -143,9 +169,95 @@ $(document).ready(function () {
         $("#value-watermark").html(file);
     })
 
-    sliderRange.on("slidechange", function (event, ui) {
-        $("#drag").fadeTo(200, (1 - ui.value / 100));
+
+   
+    $(".switcher__input").on('click', function () {
+        //console.log(this.id);
+        var drag = $("#drag");
+
+        if (drag.parent().offset() !== undefined) {
+            console.log(drag);
+            switch (this.id) {
+            case "switcher1":
+
+                drag.offset({
+                    top: drag.parent().offset().top,
+                    left: drag.parent().offset().left
+                });
+                $(".spinner")[1].value = 0;
+                $(".spinner")[0].value = 0;
+                break
+            case "switcher2":
+                drag.offset({
+                    top: (drag.parent().offset().top),
+                    left: (drag.parent().offset().left + (drag.parent().width() - drag.width()) / 2)
+                });
+                $(".spinner")[1].value = 0;
+                $(".spinner")[0].value = (drag.parent().width() - drag.width()) / 2;
+
+                break
+            case "switcher3":
+                drag.offset({
+                    top: (drag.parent().offset().top),
+                    left: (drag.parent().offset().left + drag.parent().width() - drag.width())
+                });
+                $(".spinner")[1].value = 0;
+                $(".spinner")[0].value = drag.parent().width() - drag.width();
+                break
+            case "switcher4":
+                drag.offset({
+                    top: (drag.parent().offset().top + (drag.parent().height() - drag.height()) / 2),
+                    left: (drag.parent().offset().left)
+                });
+                $(".spinner")[1].value = ((drag.parent().height() - drag.height()) / 2);
+                $(".spinner")[0].value = 0;
+                break
+            case "switcher5":
+                drag.offset({
+                    top: (drag.parent().offset().top + (drag.parent().height() - drag.height()) / 2),
+                    left: (drag.parent().offset().left + (drag.parent().width() - drag.width()) / 2)
+                });
+                $(".spinner")[1].value = ((drag.parent().height() - drag.height()) / 2);
+                $(".spinner")[0].value = ((drag.parent().width() - drag.width()) / 2);
+                break
+            case "switcher6":
+                drag.offset({
+                    top: (drag.parent().offset().top + (drag.parent().height() - drag.height()) / 2),
+                    left: (drag.parent().offset().left + drag.parent().width() - drag.width())
+                });
+                $(".spinner")[1].value = ((drag.parent().height() - drag.height()) / 2);
+                $(".spinner")[0].value = (drag.parent().width() - drag.width());
+                break
+            case "switcher7":
+                drag.offset({
+                    top: (drag.parent().offset().top + drag.parent().height() - drag.height()),
+                    left: (drag.parent().offset().left)
+                });
+                $(".spinner")[1].value = (drag.parent().height() - drag.height());
+                $(".spinner")[0].value = 0;
+                break
+            case "switcher8":
+                drag.offset({
+                    top: (drag.parent().offset().top + drag.parent().height() - drag.height()),
+                    left: (drag.parent().offset().left + (drag.parent().width() - drag.width()) / 2)
+                });
+                $(".spinner")[1].value = (drag.parent().height() - drag.height());
+                $(".spinner")[0].value = ((drag.parent().width() - drag.width()) / 2);
+                break
+            case "switcher9":
+                drag.offset({
+                    top: (drag.parent().offset().top + drag.parent().height() - drag.height()),
+                    left: (drag.parent().offset().left + drag.parent().width() - drag.width())
+                });
+                $(".spinner")[1].value = (drag.parent().height() - drag.height());
+                $(".spinner")[0].value = (drag.parent().width() - drag.width());
+                break
+
+
+            };
+        };
     });
 
+    // изменение спинера
 
 });
