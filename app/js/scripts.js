@@ -136,8 +136,75 @@ $(document).ready(function () {
     })
 
     sliderRange.on("slidechange", function (event, ui) {
-        $(".generate__preview").fadeTo(200, (1 - ui.value / 100));
+        $("#drag").fadeTo(200, (1 - ui.value / 100));
     });
+    $(".switcher__input").on('click', function () {
+        console.log(this.id);
+        var drag = $("#drag");
 
+        if (drag.parent().offset() !== undefined) {
+            console.log(drag);
+            switch (this.id) {
+            case "switcher1":
+
+                drag.offset({
+                    top: drag.parent().offset().top,
+                    left: drag.parent().offset().left
+                });
+                break
+            case "switcher2":
+                drag.offset({
+                    top: (drag.parent().offset().top),
+                    left: (drag.parent().offset().left + (drag.parent().width() - drag.width()) / 2)
+                });
+                break
+            case "switcher3":
+                drag.offset({
+                    top: (drag.parent().offset().top),
+                    left: (drag.parent().offset().left + drag.parent().width() - drag.width())
+                });
+                break
+            case "switcher4":
+                drag.offset({
+                    top: (drag.parent().offset().top + (drag.parent().height() - drag.height()) / 2),
+                    left: (drag.parent().offset().left)
+                });
+                break
+            case "switcher5":
+                drag.offset({
+                    top: (drag.parent().offset().top + (drag.parent().height() - drag.height()) / 2),
+                    left: (drag.parent().offset().left + (drag.parent().width() - drag.width()) / 2)
+                });
+
+                break
+            case "switcher6":
+                drag.offset({
+                    top: (drag.parent().offset().top + (drag.parent().height() - drag.height()) / 2),
+                    left: (drag.parent().offset().left + drag.parent().width() - drag.width())
+                });
+
+                break
+            case "switcher7":
+                drag.offset({
+                    top: (drag.parent().offset().top + drag.parent().height() - drag.height()),
+                    left: (drag.parent().offset().left)
+                });
+                break
+            case "switcher8":
+                drag.offset({
+                    top: (drag.parent().offset().top + drag.parent().height() - drag.height()),
+                    left: (drag.parent().offset().left + (drag.parent().width() - drag.width()) / 2)
+                });
+                break
+            case "switcher9":
+                drag.offset({
+                    top: (drag.parent().offset().top + drag.parent().height() - drag.height()),
+                    left: (drag.parent().offset().left + drag.parent().width() - drag.width())
+                });
+                break
+
+            };
+        };
+    });
 
 });
