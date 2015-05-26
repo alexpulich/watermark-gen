@@ -2,14 +2,13 @@ $(document).ready(function () {
 
 
 
-    var spinner = $(".spinner").spinner({
-        min: 0
-    });
+    var spinnerX = $("#spinnerX").spinner({min: 0}),
+        spinnerY = $("#spinnerY").spinner({min: 0});
 
     var sliderRange = $(".slider-range"),
         sliderMin = sliderRange.data('min');
-    sliderMax = sliderRange.data('max');
-    sliderStep = sliderRange.data('step');
+        sliderMax = sliderRange.data('max');
+        sliderStep = sliderRange.data('step');
 
 
     sliderRange.slider({
@@ -28,7 +27,7 @@ $(document).ready(function () {
             console.log('отправляем картинку на сервер');
         }
     }).bind('fileuploaddone', function (e, data) {
-
+      
         // выводим картинку в наш документ после события загрузки картинки на сервер
         // проверим впервые ли загружается картинка, если нет очистим область вывода
 
@@ -42,8 +41,9 @@ $(document).ready(function () {
         }
 
         // создаем элемент изображения
-        var $img = $('<img>', {
-            src: $("#file-upload").attr("data-url") + "files/" + data.files[0].name, // путь из данных атрибута добачной папки и имя файла из инпута
+        var strFiles = "files/",
+            $img = $('<img>', {
+            src: $("#file-upload").attr("data-url") + strFiles + data.files[0].name, // путь из данных атрибута добачной папки и имя файла из инпута
             alt: 'Основное изображение',
             title: 'Ваше изображение',
             class: 'image-upload' // добавим класс для изображения
@@ -60,22 +60,26 @@ $(document).ready(function () {
                 });
 
             // получаем  цифры размера изображения
-            var width = $(this).width();
-            var height = $(this).height();
+            var width = $(this).width(),
+                height = $(this).height(),
+                boxHeight = $('.wraper__image').height(),
+                boxWidth = $('.wraper__image').width();
 
-            console.log('width= ' + width + ' height= ' + height);
+            console.log(boxHeight);
+            console.log(boxWidth);
+
             // и масштабируем его добавочным классом
             if (width > height) {
                 $img.addClass('image-upload-w');
                 $('.wraper__image-bg').css({
-                    'height': '' + Math.round(height * 653 / width) + 'px',
-                    'width': '653px'
+                    'height': '' + Math.round(height * boxWidth / width) + 'px',
+                    'width': boxWidth+'px'
                 });
             } else {
                 $img.addClass('image-upload-h');
                 $('.wraper__image-bg').css({
-                    'height': '534px',
-                    'width': '' + Math.round(width * 534 / height) + 'px'
+                    'height': boxHeight+'px',
+                    'width': '' + Math.round(width * boxHeight / height) + 'px'
                 });
             }
         });
@@ -102,8 +106,9 @@ $(document).ready(function () {
                 $('#drag').remove();
             }
             // создаем элемент изображения
-            var $wtm = $('<img>', {
-                src: $("#watermark").attr("data-url") + "files/" + data.files[0].name, // путь из данных атрибута добачной папки и имя файла из инпута
+            var strFiles = "files/", // переменная два раза появляется  в модуле должна быть скрытой глобальной для
+                $wtm = $('<img>', {
+                src: $("#watermark").attr("data-url") + strFiles + data.files[0].name, // путь из данных атрибута добачной папки и имя файла из инпута
                 alt: 'Основное изображение',
                 title: 'Ваше изображение',
                 id: 'drag',
@@ -117,7 +122,10 @@ $(document).ready(function () {
             //$wtm.wrap('<div id="drag"></div>');
             $("#drag").draggable({
                 containment: ".image-upload",
-                scroll: false
+                scroll: false,
+                drag: function() {
+                    spinnerX.spinner( "value", 15 );
+                    }
             });
         }
 
@@ -136,7 +144,7 @@ $(document).ready(function () {
     })
 
     sliderRange.on("slidechange", function (event, ui) {
-        $(".generate__preview").fadeTo(200, (1 - ui.value / 100));
+        $("#drag").fadeTo(200, (1 - ui.value / 100));
     });
 
 
