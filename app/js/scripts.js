@@ -17,7 +17,11 @@ $(document).ready(function () {
         min: sliderMin,
         max: sliderMax,
         step: sliderStep,
-        range: 'min'
+        range: 'min',
+        animate: false,
+        slide: function (event, ui) {
+            $("#drag").fadeTo(0, (1 - ui.value / 100));
+        }
     });
 
     // событие отправки изображения на сервер
@@ -135,9 +139,9 @@ $(document).ready(function () {
         $("#value-watermark").html(file);
     })
 
-    sliderRange.on("slidechange", function (event, ui) {
-        $("#drag").fadeTo(200, (1 - ui.value / 100));
-    });
+    //    sliderRange.on("slidechange", function (event, ui) {
+    //        $("#drag").fadeTo(200, (1 - ui.value / 100));
+    //    });
     $(".switcher__input").on('click', function () {
         console.log(this.id);
         var drag = $("#drag");
