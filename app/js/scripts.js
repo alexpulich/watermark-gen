@@ -151,8 +151,8 @@ $(document).ready(function () {
                     top: drag.parent().offset().top,
                     left: drag.parent().offset().left
                 });
-                $(".spinner")[1].value = (drag.parent().offset().top);
-                $(".spinner")[0].value = (drag.parent().offset().left);
+                $(".spinner")[1].value = 0;
+                $(".spinner")[0].value = 0;
                 break
             case "switcher2":
                 drag.offset({
