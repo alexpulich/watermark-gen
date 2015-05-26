@@ -3,16 +3,24 @@ $(document).ready(function () {
 
    
 
-    var spinnerX = $("#spinnerX").spinner({min: 0, 
-                                             spin: function (e, ui) {
+    var spinnerX = $("#spinnerX").spinner({min: 0,
+                                           spin: function (e, ui) {
                                                 if (ui.value < ($(".wraper__image-bg").width()-$("#drag").width()+1)) {
                                                     $('#drag').css('left', ui.value+'px');
+                                                } else {
+                                                    $('#drag').css('left', '0px');
+                                                    $( this ).spinner( "value", 0 );
+                                                    return false;
                                                 };
                                              }}),
         spinnerY = $("#spinnerY").spinner({min: 0, 
                                             spin: function (e, ui) {
                                                 if (ui.value < ($(".wraper__image-bg").height()-$("#drag").height()+1)) {
                                                     $('#drag').css('top', ui.value+'px');
+                                                } else {
+                                                    $('#drag').css('top', '0px');
+                                                    $( this ).spinner( "value", 0 );
+                                                    return false;
                                                 };
                                             }});
 
@@ -141,6 +149,10 @@ $(document).ready(function () {
             // добавляем изображение в документ
 
             $(".wraper__image-bg").append($wtm);
+            
+            // по умолчанию новый вотемарк находится слева вверху
+            spinnerX.spinner( "value", 0 );
+            spinnerY.spinner( "value", 0 );
         
             // выполняем drageble и отслеживаем и выводим координаты вотемарка
             $("#drag").draggable({
