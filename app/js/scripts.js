@@ -48,6 +48,9 @@ $(document).ready(function () {
         add: function (e, data) { // отправляем картинку на сервер
             data.submit();
             console.log('отправляем картинку на сервер');
+        },
+        done: function (e, data) {
+            console.log('done');
         }
     }).bind('fileuploaddone', function (e, data) {
       
@@ -87,6 +90,7 @@ $(document).ready(function () {
                 height = $(this).height(),
                 boxHeight = $('.wraper__image').height(),
                 boxWidth = $('.wraper__image').width(),
+                f = boxWidth/boxHeight,
                 setResize = function (classCss, h, w) {
                     $img.addClass(classCss);
 
@@ -95,21 +99,16 @@ $(document).ready(function () {
                             'width': w+'px'
                         });
                 };
-
-            // и масштабируем его добавочным классом
-            if (width/height > boxWidth/boxHeight) {
-                    if (width > height) {
-                        setResize('image-upload-w', Math.round(height * boxWidth / width),  boxWidth);   
-                    } else {
-                        setResize('image-upload-h', boxHeight,  Math.round(width * boxHeight / height));
-                    }
-            } else {
-                    if (width > height) {
-                        setResize('image-upload-w', boxHeight,  Math.round(width * boxHeight / height));
-                    } else {
-                        setResize('image-upload-h', Math.round(height * boxWidth / width),  boxWidth);
-                    }
-            };
+                          
+            //и масштабируем его добавочным классом
+            if ((width<boxWidth)&&(height<boxHeight)) {        
+                        setResize('', height,  width);   
+            } else if (f < width/height) {
+                    setResize('image-upload-w ', Math.round(boxWidth*height/width), boxWidth);
+                    
+                } else {
+                    setResize('image-upload-h ',boxHeight, Math.round(boxHeight*width/height));
+                }
 
         });
 
@@ -172,7 +171,9 @@ $(document).ready(function () {
 
 
     $("#file-upload").change(function () {
-        var file = $(this).val().split('\\').pop();
+        var file = $(this).val().split('\\').pop(),
+            extfile=file.split('.').pop();
+            console.log(extfile);
         $("#value-file").html(file);
     })
 
