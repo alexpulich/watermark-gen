@@ -1,14 +1,12 @@
 $(document).ready(function () {
 
-
-
-
     var spinnerX = $("#spinnerX").spinner({
             min: 0,
             spin: function (e, ui) {
                 if (ui.value < ($(".wraper__image-bg").width() - $("#drag").width() + 1)) {
                     $('#drag').css('left', ui.value + 'px');
                 } else {
+                    //если пытаемся выйти за границы подложки по координате х - вернуться в начало
                     $('#drag').css('left', '0px');
                     $(this).spinner("value", 0);
                     return false;
@@ -21,6 +19,7 @@ $(document).ready(function () {
                 if (ui.value < ($(".wraper__image-bg").height() - $("#drag").height() + 1)) {
                     $('#drag').css('top', ui.value + 'px');
                 } else {
+                    //если пытаемся выйти за границы подложки по координает у - вернуться в начало
                     $('#drag').css('top', '0px');
                     $(this).spinner("value", 0);
                     return false;
@@ -54,6 +53,7 @@ $(document).ready(function () {
             console.log('отправляем картинку на сервер');
         },
         done: function (e, data) {
+            // вообщето все что в бинд должно быть здесь, но оно почему-то вначале не хотело работать. хотя теперь работает
             console.log('done');
         }
     }).bind('fileuploaddone', function (e, data) {
@@ -117,8 +117,7 @@ $(document).ready(function () {
         });
 
         // добавляем изображение в документ
-        $(".wraper__image-bg").append($img);
-
+        $(".wraper__image-bg").prepend($img);
     });
     // конец события отправки изображения на сервер
 
@@ -153,6 +152,7 @@ $(document).ready(function () {
 
             $(".wraper__image-bg").append($wtm);
 
+
             // по умолчанию новый вотемарк находится слева вверху
             spinnerX.spinner("value", 0);
             spinnerY.spinner("value", 0);
@@ -186,10 +186,12 @@ $(document).ready(function () {
         $("#value-watermark").html(file);
     })
 
+    // очищение по кнопке сброс - кроме стандартных действий reset с элементами формы
     $(".generate__form-btn-reset").on('click', function () {
-        $('#value-file').empty();
-        $('#value-watermark').empty();
-        sliderRange.slider("value", 0);
+        $('#value-file').empty(); // удаляем содержимое дива - имя файла подложки
+        $('#value-watermark').empty(); // удаляем содержимое дива - имая файла вотемарк
+        $(".wraper__image").remove(); // удаляем обертку обоих картинок со всем содержимым
+        sliderRange.slider("value", 0); // устанавливаем прозрачность в ноль
 
         console.log(sliderRange.slider.value);
     })
