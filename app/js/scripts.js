@@ -41,7 +41,9 @@ $(document).ready(function () {
         range: 'min',
         animate: false,
         slide: function (event, ui) {
+            $(".slider-range").attr('data-val', ui.value);
             $("#drag").fadeTo(0, (1 - ui.value / 100));
+
         }
     });
 

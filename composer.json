@@ -1,0 +1,18 @@
+{
+    "name": "watermark-gen",
+    "description": "watermark-gen",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Babich Max",
+            "email": "lilmax22@bk.ru"
+        }
+    ],
+    "require": {
+        "sybio/image-workshop": "dev-master"
+    },
+    "config": {
+        "vendor-dir": "app/server/lib"
+    }
+
+}
