@@ -30,7 +30,7 @@ var createWatermark = (function(){
                 var status = ans.status,
                     fille = ans.filename;
 
-                $.fileDownload("server/download.php", {
+                $.fileDownload("/server/download.php", {
                     httpMethod: "POST",
                     data: ans
                 })

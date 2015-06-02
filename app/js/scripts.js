@@ -49,7 +49,6 @@ var watermark = (function () {
         $('#file-upload').fileupload({
             dataType: 'json',
             acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-            maxFileSize: 150000,
             // Enable image resizing, except for Android and Opera,
             // which actually support image resizing, but fail to
             // send Blob objects via XHR requests:
@@ -60,6 +59,8 @@ var watermark = (function () {
                 console.log('отправляем картинку на сервер');
             },
             done: function (e, data) {
+                var imgName = data.result.files[0].name;
+
                 if ($('.wraper__image').length > 0) {
                     $('.image-upload').remove();
                 } else {
@@ -72,12 +73,12 @@ var watermark = (function () {
                 // создаем элемент изображения
                 var strFiles = "files/",
                     $img = $('<img>', {
-                        src: $("#file-upload").attr("data-url") + strFiles + data.files[0].name, // путь из данных атрибута добачной папки и имя файла из инпута
+                        src: $("#file-upload").attr("data-url") + strFiles + imgName, // путь из данных атрибута добачной папки и имя файла из инпута
                         alt: 'Основное изображение',
                         title: 'Ваше изображение',
                         class: 'image-upload' // добавим класс для изображения
                     });
-
+                $("#value-file").html(imgName);
                 // ждем загрузки картинки браузером
                 $img.load(function () {
                     // удаляем атрибуты width и height
@@ -125,7 +126,6 @@ var watermark = (function () {
         $('#watermark').fileupload({
             dataType: 'json',
             acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-            maxFileSize: 150000,
             // Enable image resizing, except for Android and Opera,
             // which actually support image resizing, but fail to
             // send Blob objects via XHR requests:
@@ -136,6 +136,7 @@ var watermark = (function () {
                 console.log('отправляем #watermark на сервер');
             },
             done: function (e, data) {
+                var imgName = data.result.files[0].name;
                 // проверим есть ли фон, если да загрузим ватемарк
                 if ($('.wraper__image').length > 0) {
 
@@ -146,14 +147,14 @@ var watermark = (function () {
                     // создаем элемент изображения
                     var strFiles = "files/", // переменная два раза появляется  в модуле должна быть скрытой глобальной для
                         $wtm = $('<img>', {
-                            src: $("#watermark").attr("data-url") + strFiles + data.files[0].name, // путь из данных атрибута добачной папки и имя файла из инпута
+                            src: $("#watermark").attr("data-url") + strFiles + imgName, // путь из данных атрибута добачной папки и имя файла из инпута
                             alt: 'Основное изображение',
                             title: 'Ваше изображение',
                             id: 'drag',
                             class: 'image-watermark ui-widget ui-widget-content' // добавим класс для изображения
                         });
 
-
+                    $("#value-watermark").html(imgName);
                     // добавляем изображение в документ
 
                     $(".wraper__image-bg").append($wtm);
