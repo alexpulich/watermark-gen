@@ -14,7 +14,7 @@ block content
 			.config__panel
 				.config__panel-title Настройки
 
-				form.generate__form
+				form.generate__form(enctype="multipart/form-data" action="server/createwatermark.php")
 					.generate__form-section.generate__form-file
 						.generate__form-row
 							label.generate__form-title Исходное изображение
@@ -59,7 +59,7 @@ block content
 					.generate__form-section.generate__form-opacity
 						label.generate__form-title Прозрачность
 						.generate__form-opacity__slider
-							.slider-range(data-min='0' data-max='100' data-step='1')
+							.slider-range(id='opancity' data-min='0' data-max='100' data-step='1')
 
 					.generate__form-section.generate__form-buttons
 						input(type='reset' value='Сброс').generate__form-btn-reset

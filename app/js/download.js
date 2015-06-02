@@ -11,7 +11,7 @@ var createWatermark = (function(){
         var form = $(this);
         if (_validateForm(form) === false) {
             return false;
-        };
+        }
 
         var url = form.attr("action"),
             img = $("#value-file").html(),

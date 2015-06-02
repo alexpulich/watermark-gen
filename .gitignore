@@ -2,3 +2,4 @@ node_modules
 app/bower
 .idea
 app/server/lib
+dist

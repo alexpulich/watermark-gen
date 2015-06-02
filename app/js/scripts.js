@@ -10,7 +10,7 @@ var watermark = (function () {
                     $('#drag').css('left', '0px');
                     $(this).spinner("value", 0);
                     return false;
-                };
+                }
             }
         }),
         spinnerY = $("#spinnerY").spinner({
@@ -23,7 +23,7 @@ var watermark = (function () {
                     $('#drag').css('top', '0px');
                     $(this).spinner("value", 0);
                     return false;
-                };
+                }
             }
         }),
         sliderRange = $(".slider-range");

@@ -4,13 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <!-- Styles-->
+    <!--build:css css/main.css-->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <!--endbuild-->
+    <!--build:css css/vendor.css-->
     <link rel="stylesheet" href="bower/normalize.css/normalize.css">
-    <link rel="stylesheet" href="css/build/base.min.css">
     <link rel="stylesheet" href="css/fileupload.css">
+    <link rel="stylesheet" href="css/tooltips.css">
+    <!--endbuild-->
     <!-- Favicon-->
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/tooltips.css"/>
     <title>
     </title>
   </head>
@@ -29,16 +34,16 @@
         </div>
         <div class="config__panel">
           <div class="config__panel-title">Настройки</div>
-          <form class="generate__form" enctype="multipart/form-data" action="server/createwatermark.php">
+          <form enctype="multipart/form-data" action="server/createwatermark.php" class="generate__form">
             <div class="generate__form-section generate__form-file">
               <div class="generate__form-row">
                 <label class="generate__form-title">Исходное изображение</label>
-                <input type="file" name="" id="file-upload" data-url="server/php/" class="input-file" accept="image/*,image/jpeg">
+                <input type="file" name="" id="file-upload" data-url="server/php/" accept="image/*,image/jpeg" class="input-file">
                 <div id="value-file" class="generate__form-upload"></div>
               </div>
               <div class="generate__form-row">
                 <label class="generate__form-title">Водяной знак</label>
-                <input type="file" name="" id="watermark" data-url="server/php/" class="input-file" accept="image/*,image/jpeg">
+                <input type="file" name="" id="watermark" data-url="server/php/" accept="image/*,image/jpeg" class="input-file">
                 <div id="value-watermark" class="generate__form-upload"></div>
               </div>
             </div>
@@ -76,7 +81,7 @@
             <div class="generate__form-section generate__form-opacity">
               <label class="generate__form-title">Прозрачность</label>
               <div class="generate__form-opacity__slider">
-                <div id="opancity" data-min="0" data-val="0" data-max="100" data-step="1" class="slider-range"></div>
+                <div id="opancity" data-min="0" data-max="100" data-step="1" class="slider-range"></div>
               </div>
             </div>
             <div class="generate__form-section generate__form-buttons">
@@ -91,22 +96,19 @@
       <p>© 2015, Генератор водяных знаков, Loft-scool, команда №5</p>
     </div>
     <!-- Js-->
+    <!--build:js js/vendor.js-->
     <script src="bower/jquery/dist/jquery.min.js"></script>
     <script src="bower/jquery-ui/jquery-ui.min.js"></script>
     <script src="bower/jquery-ui/ui/spinner.js"></script>
     <script src="bower/jquery-ui/ui/slider.js"></script>
-    
     <script src="bower/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
     <script src="bower/blueimp-file-upload/js/jquery.fileupload.js"></script>
     <script src="bower/jquery.fileDownload/src/Scripts/jquery.fileDownload.js"></script>
-
+    <!--endbuild-->
+    <!--build:js js/main.js-->
     <script src="js/scripts.js"></script>
     <script src="js/tooltip.js"></script>
     <script src="js/download.js"></script>
-
-
-
-
-
+    <!--endbuild-->
   </body>
 </html>

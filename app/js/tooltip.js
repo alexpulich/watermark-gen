@@ -43,6 +43,13 @@ $.fn.tooltip = function(options) {
         left: leftEdge - tooltipWidth,
         top: topEdge + topCentered
       };
+      break;
+    default:
+      positions = {
+        left: leftEdge - tooltipWidth,
+        top: topEdge + topCentered
+      };
+      break;
   }
   return createdTooltip.offset(positions).css('opacity', '1');
 };
