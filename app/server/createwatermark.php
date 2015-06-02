@@ -3,14 +3,13 @@ require_once "lib/autoload.php";
 require_once "lib/sybio/image-workshop/src/PHPImageWorkshop/ImageWorkshop.php";
 
 //  Получение данных
-$img = $_POST['img'];
-$watermark = $_POST['watermark'];
+$img = iconv("utf-8", "cp1251//IGNORE", $_POST['img']);
+$watermark =  iconv("utf-8", "cp1251//IGNORE", $_POST['watermark']);;
 $x = $_POST['x'];
 $y = $_POST['y'];
 $opancity = $_POST['opancity'];
 $widthImg = $_POST['widthImg'];
 $heightImg  = $_POST['heightImg'];
-
 
 //Получаем картинки
 $imgMain = PHPImageWorkshop\ImageWorkshop::initFromPath("php/files/".$img);
